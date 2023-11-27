@@ -1,0 +1,29 @@
+// schema.prisma
+// Define database schema
+model Batch {
+  id           Int      @id @default(autoincrement())
+  quantity     Int
+  comment      String?
+  machines     Machine[]
+}
+
+model Machine {
+  id          Int     @id @default(autoincrement())
+  batchId     Int
+  model       String
+  date        DateTime
+  serialNumber String
+  licenseLevel String
+  batch       Batch   @relation(fields: [batchId], references: [id])
+}
+
+// Configure database connection
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}

@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  nextjs:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:16.1-alpine3.18
+    environment:
+      POSTGRES_DB: fcl
+      POSTGRES_USER: postgres
+    ports:
+      - '5432:5432'
