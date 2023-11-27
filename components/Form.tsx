@@ -47,7 +47,6 @@ const Form: React.FC = () => {
 
   return (
     <div className="border-solid border-2 rounded border-copper p-10">
-      {/* <form className="max-w-md mx-auto my-8" onSubmit={handleFormSubmit}> */}
       <form className="mx-auto" onSubmit={handleFormSubmit}>
         {/* Title */}
         <h1 className="text-xl font-medium mb-8">Batch Form</h1>
@@ -72,9 +71,6 @@ const Form: React.FC = () => {
 
         {/* Date picker */}
         <div className="mb-4">
-          {/* <label className="block text-gray-200 text-sm font-bold mb-2">
-            Date
-          </label> */}
           <DatePicker
             selected={formData.date}
             onChange={(date) => setFormData({ ...formData, date: date })}
@@ -87,22 +83,15 @@ const Form: React.FC = () => {
 
         {/* Quantity */}
         <div className="mb-4">
-          {/* <label className="block text-gray-200 text-sm font-bold mb-2">
-            Quantity
-          </label> */}
           <input
             type="number"
             className="appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline text-black"
             onChange={(e) =>
-              // setFormData({ ...formData, quantity: Number(e.target.value) })
               setFormData({ ...formData, quantity: e.target.value })
             }
             value={formData.quantity}
             required
             placeholder="Quantity"
-            // placeholder={
-            //   formData.quantity === 0 ? "Quantity" : Number(formData.quantity)
-            // }
           />
         </div>
 
@@ -111,7 +100,6 @@ const Form: React.FC = () => {
           <select
             className="border rounded text-black w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             onChange={(e) =>
-              // setFormData({ ...formData, licenseLevel: Number(e.target.value) })
               setFormData({ ...formData, licenseLevel: e.target.value })
             }
             value={formData.licenseLevel}
